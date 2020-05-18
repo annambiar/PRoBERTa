@@ -257,7 +257,7 @@ for f in family_classification/split_tokenized/family/*.family; do
 done
 
 # Generate family label dictionary file
-awk '{print $0,0}'family_classification/split_tokenized/family/ *.family | sort | uniq > \
+awk '{print $0,0}' family_classification/split_tokenized/family/*.family | sort | uniq > \
 	family_classification/split_tokenized/family/families.txt
 
 # Binarize sequences
