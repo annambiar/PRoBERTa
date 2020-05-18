@@ -1,5 +1,6 @@
 
 # PRoBERTa
+Ananthan Nambiar, Maeve heflin, Simon Liu, Mark Hopkins, Sergei Maslov, Anna Ritz
 
 ## Notes
 - Links to Google Drive folders are provided for example output and data files.
