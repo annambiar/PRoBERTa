@@ -1,12 +1,11 @@
 
 # PRoBERTa
-Ananthan Nambiar, Maeve Heflin, Simon Liu, Mark Hopkins, Sergei Maslov, Anna Ritz
 
 ## Notes
 - Links to Google Drive folders are provided for example output and data files.
 
 ## Requirements and Installation
-Install sentencepeice tokenizer
+sentencepeice tokenizer
 ```bash
 pip3 install sentencepeice
 ```
@@ -24,8 +23,8 @@ Train a tokenizer and tokenize data for protein family and interaction fine-tuni
 python3 tokenizer.py
 ```
 - To change (if needed)
-    * path: path to the protein family data. This should be a .tab file with "Sequence" and "Protein families" as two of the columns
-    * int_path path to protein interaction data. This should be a json file with 'from', 'to' and 'link' for each interaction
+		* path: path to the protein family data. This should be a .tab file with "Sequence" and "Protein families" as two of the columns
+		* int_path path to protein interaction data. This should be a json file with 'from', 'to' and 'link' for each interaction
 
 ### pRoBERTa_pretrain.sh
  Pre-train RoBERTa model
@@ -36,11 +35,10 @@ bash pRoBERTa_pretrain.sh pretrain 4 /bert/pretrained_model \
         /bert/data/pretraining/split_binarized/ \
         768 5 125000 3125 0.0025 32 64 3
 ```
-Arguments
-
+- Arguments
 		* PREFIX: pretrain
 		* NUM_GPUS: 4
-    * OUTPUT_DIR: [/bert/pretrained_model](https://drive.google.com/drive/u/2/folders/1fyb3RklnVWAUwajv20BP5smq9ypDgMl9)
+		* OUTPUT_DIR: [/bert/pretrained_model](https://drive.google.com/drive/u/2/folders/1fyb3RklnVWAUwajv20BP5smq9ypDgMl9)
 		* DATA_DIR: [/bert/data/pretraining/split_binarized/](https://drive.google.com/drive/u/2/folders/1inKxRuf5f3JBM2YDO1dQc-gTsdMn6VGR)
 		* ENCODER_EMBED_DIM: 768
 		* ENCODER_LAYERS: 5
