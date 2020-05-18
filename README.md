@@ -23,8 +23,8 @@ Train a tokenizer and tokenize data for protein family and interaction fine-tuni
 python3 tokenizer.py
 ```
 - To change (if needed)
-		* path: path to the protein family data. This should be a .tab file with "Sequence" and "Protein families" as two of the columns
-		* int_path path to protein interaction data. This should be a json file with 'from', 'to' and 'link' for each interaction
+	* path: path to the protein family data. This should be a .tab file with "Sequence" and "Protein families" as two of the columns
+	* int_path path to protein interaction data. This should be a json file with 'from', 'to' and 'link' for each interaction
 
 ### pRoBERTa_pretrain.sh
  Pre-train RoBERTa model
@@ -36,18 +36,18 @@ bash pRoBERTa_pretrain.sh pretrain 4 /bert/pretrained_model \
         768 5 125000 3125 0.0025 32 64 3
 ```
 - Arguments
-		* PREFIX: pretrain
-		* NUM_GPUS: 4
-		* OUTPUT_DIR: [/bert/pretrained_model](https://drive.google.com/drive/u/2/folders/1fyb3RklnVWAUwajv20BP5smq9ypDgMl9)
-		* DATA_DIR: [/bert/data/pretraining/split_binarized/](https://drive.google.com/drive/u/2/folders/1inKxRuf5f3JBM2YDO1dQc-gTsdMn6VGR)
-		* ENCODER_EMBED_DIM: 768
-		* ENCODER_LAYERS: 5
-		* TOTAL_UPDATES: 125000
-		* WARMUP_UPDATES: 3125
-		* PEAK_LEARNING_RATE: 0.0025
-		* MAX_SENTENCES: 32
-		* UPDATE_FREQ: 64
-		* PATIENCE: 3
+	* PREFIX: pretrain
+	* NUM_GPUS: 4
+	* OUTPUT_DIR: [/bert/pretrained_model](https://drive.google.com/drive/u/2/folders/1fyb3RklnVWAUwajv20BP5smq9ypDgMl9)
+	* DATA_DIR: [/bert/data/pretraining/split_binarized/](https://drive.google.com/drive/u/2/folders/1inKxRuf5f3JBM2YDO1dQc-gTsdMn6VGR)
+	* ENCODER_EMBED_DIM: 768
+	* ENCODER_LAYERS: 5
+	* TOTAL_UPDATES: 125000
+	* WARMUP_UPDATES: 3125
+	* PEAK_LEARNING_RATE: 0.0025
+	* MAX_SENTENCES: 32
+	* UPDATE_FREQ: 64
+	* PATIENCE: 3
 
 ### pRoBERTa_finetune_ppi.sh: 
 Fine-tune RoBERTa model for Protein Interaction Prediction Task
@@ -61,21 +61,21 @@ bash pRoBERTa_finetune_ppi.sh ppi 4 /bert/ppi_prediction \
         no
 ```
 - Arguments
-		* PREFIX: ppi
-		* NUM_GPUS: 4
-		* OUTPUT_DIR: [/bert/ppi_prediction](https://drive.google.com/drive/u/2/folders/1mS34_2YTBh2wZuvn9QF7m0254bnc2LE_)
-		* DATA_DIR: [/bert/data/ppi_prediction/split_binarized/robustness_minisplits/1.00](https://drive.google.com/drive/u/2/folders/1kjNnud51AIPu_eeuqdapHHE-GVoaHfZm)
-		* ENCODER_EMBED_DIM: 768
-		* ENCODER_LAYERS: 5
-		* TOTAL_UPDATES: 12500
-		* WARMUP_UPDATES: 312
-		* PEAK_LEARNING_RATE: 0.0025
-		* MAX_SENTENCES: 32
-		* UPDATE_FREQ: 64
-		* NUM_CLASSES: 4083
-		* PATIENCE: 3
-		* PRETRAIN_CHECKPOINT: [/bert/remastered_run/pretraining/checkpoint_best.pt](https://drive.google.com/drive/u/2/folders/1TbFjyRfbkLgJ_rlvO1SFB-ZvwQyykvK7)
-		* RESUME_TRAINING: no
+	* PREFIX: ppi
+	* NUM_GPUS: 4
+	* OUTPUT_DIR: [/bert/ppi_prediction](https://drive.google.com/drive/u/2/folders/1mS34_2YTBh2wZuvn9QF7m0254bnc2LE_)
+	* DATA_DIR: [/bert/data/ppi_prediction/split_binarized/robustness_minisplits/1.00](https://drive.google.com/drive/u/2/folders/1kjNnud51AIPu_eeuqdapHHE-GVoaHfZm)
+	* ENCODER_EMBED_DIM: 768
+	* ENCODER_LAYERS: 5
+	* TOTAL_UPDATES: 12500
+	* WARMUP_UPDATES: 312
+	* PEAK_LEARNING_RATE: 0.0025
+	* MAX_SENTENCES: 32
+	* UPDATE_FREQ: 64
+	* NUM_CLASSES: 4083
+	* PATIENCE: 3
+	* PRETRAIN_CHECKPOINT: [/bert/remastered_run/pretraining/checkpoint_best.pt](https://drive.google.com/drive/u/2/folders/1TbFjyRfbkLgJ_rlvO1SFB-ZvwQyykvK7)
+	* RESUME_TRAINING: no
 
 ### pRoBERTa_finetune_pfamclass.sh:
 Fine-tune RoBERTa model for Family Classification Task
