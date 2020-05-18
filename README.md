@@ -1,6 +1,6 @@
 
 # PRoBERTa
-Ananthan Nambiar, Maeve heflin, Simon Liu, Mark Hopkins, Sergei Maslov, Anna Ritz
+Ananthan Nambiar, Maeve Heflin, Simon Liu, Mark Hopkins, Sergei Maslov, Anna Ritz
 
 ## Notes
 - Links to Google Drive folders are provided for example output and data files.
@@ -51,7 +51,7 @@ bash pRoBERTa_pretrain.sh pretrain 4 /bert/pretrained_model \
 	* PATIENCE: 3
 
 ### protein_family_clustering.py
-Cluster proteins using k-means and calculate the normalized mutual information (NMI) with pritein families
+Cluster proteins using k-means and calculate the normalized mutual information (NMI) with protein families
 
 #### Example Usage:
 ```bash
@@ -104,21 +104,21 @@ bash pRoBERTa_finetune_pfamclass.sh family 4 /bert/family_classification \
         no
 ```
 - Arguments
-		* PREFIX: family
-		* NUM_GPUS: 4
-		* OUTPUT_DIR: [/bert/family_classification](https://drive.google.com/drive/u/2/folders/1EGvJEAVDfPb1gcxPUsr92Tan9rPgasGm)
-		* DATA_DIR: [/bert/data/family_classification/split_binarized/robustness_minisplits/1.00](https://drive.google.com/drive/u/2/folders/1VxNHbwWqVZsnnZwA-6gjFtxkXB55tX3y)
-		* ENCODER_EMBED_DIM: 768
-		* ENCODER_LAYERS: 5
-		* TOTAL_UPDATES: 12500
-		* WARMUP_UPDATES: 312
-		* PEAK_LEARNING_RATE: 0.0025
-		* MAX_SENTENCES: 32
-		* UPDATE_FREQ: 64
-		* NUM_CLASSES: 4083
-		* PATIENCE: 3
-		* PRETRAIN_CHECKPOINT: [/bert/remastered_run/pretraining/checkpoint_best.pt](https://drive.google.com/drive/u/2/folders/1TbFjyRfbkLgJ_rlvO1SFB-ZvwQyykvK7)
-		* RESUME_TRAINING: no
+	* PREFIX: family
+	* NUM_GPUS: 4
+	* OUTPUT_DIR: [/bert/family_classification](https://drive.google.com/drive/u/2/folders/1EGvJEAVDfPb1gcxPUsr92Tan9rPgasGm)
+	* DATA_DIR: [/bert/data/family_classification/split_binarized/robustness_minisplits/1.00](https://drive.google.com/drive/u/2/folders/1VxNHbwWqVZsnnZwA-6gjFtxkXB55tX3y)
+	* ENCODER_EMBED_DIM: 768
+	* ENCODER_LAYERS: 5
+	* TOTAL_UPDATES: 12500
+	* WARMUP_UPDATES: 312
+	* PEAK_LEARNING_RATE: 0.0025
+	* MAX_SENTENCES: 32
+	* UPDATE_FREQ: 64
+	* NUM_CLASSES: 4083
+	* PATIENCE: 3
+	* PRETRAIN_CHECKPOINT: [/bert/remastered_run/pretraining/checkpoint_best.pt](https://drive.google.com/drive/u/2/folders/1TbFjyRfbkLgJ_rlvO1SFB-ZvwQyykvK7)
+	* RESUME_TRAINING: no
 
 #### pRoBERTa_evaluate_family_batch.py: 
 Predict families using fine-tuned RoBERTa model
@@ -132,12 +132,12 @@ python3 pRoBERTa_evaluate_family_batch.py /bert/data/family_classification/split
 	protein_family_classification 256
 ```
 - Arguments
-		* DATA: [/bert/data/family_classification/split_tokenized/full/Finetune_fam_data.split.test.10](https://drive.google.com/drive/u/2/folders/1CvZPrtqs_JqxJVG3Fk-2FwUEC5R7NNUU)
-		* BINARIZED_DATA: [/bert/data/family_classification/split_binarized/robustness_minisplits/1.00/](https://drive.google.com/drive/u/2/folders/1VxNHbwWqVZsnnZwA-6gjFtxkXB55tX3y)
-		* OUTPUT: [predictions.tsv](https://drive.google.com/drive/u/2/folders/10gpJUzyjPCT12GfqUexOFcjFoTW9Rcr4)
-		* MODEL_FOLDER: [/bert/family_classification/checkpoints/](https://drive.google.com/drive/u/2/folders/1JgEfybT6wT8MGzaxgAUKI7dH6W0oWLBn)
-		* CLASSIFICATION_HEAD_NAME: protein_family_classification
-		* BATCH_SIZE: 256
+	* DATA: [/bert/data/family_classification/split_tokenized/full/Finetune_fam_data.split.test.10](https://drive.google.com/drive/u/2/folders/1CvZPrtqs_JqxJVG3Fk-2FwUEC5R7NNUU)
+	* BINARIZED_DATA: [/bert/data/family_classification/split_binarized/robustness_minisplits/1.00/](https://drive.google.com/drive/u/2/folders/1VxNHbwWqVZsnnZwA-6gjFtxkXB55tX3y)
+	* OUTPUT: [predictions.tsv](https://drive.google.com/drive/u/2/folders/10gpJUzyjPCT12GfqUexOFcjFoTW9Rcr4)
+	* MODEL_FOLDER: [/bert/family_classification/checkpoints/](https://drive.google.com/drive/u/2/folders/1JgEfybT6wT8MGzaxgAUKI7dH6W0oWLBn)
+	* CLASSIFICATION_HEAD_NAME: protein_family_classification
+	* BATCH_SIZE: 256
 
 ### pRoBERTa_evaluate_ppi_batch.py: 
 Predict PPI using fine-tuned RoBERTa model
@@ -151,9 +151,9 @@ python3 pRoBERTa_evaluate_ppi_batch.py /bert/data/ppi_prediction/split_tokenized
 	protein_interaction_prediction 256
 ```
 - Arguments:
-		* DATA: [/bert/data/ppi_prediction/split_tokenized/full/Finetune_interact_tokenized.split.test.10](https://drive.google.com/drive/u/2/folders/1GxGGOqQz5LvlLoTW3EnuEEr7fKwmu8ju)
-		* BINARIZED_DATA: [/bert/data/ppi_prediction/split_binarized/robustness_minisplits/1.00/](https://drive.google.com/drive/u/2/folders/1kjNnud51AIPu_eeuqdapHHE-GVoaHfZm)
-		* OUTPUT: [predictions.tsv](https://drive.google.com/drive/u/2/folders/1mS34_2YTBh2wZuvn9QF7m0254bnc2LE_)
-		* MODEL_FOLDER: [/bert/ppi_prediction/checkpoints/](https://drive.google.com/drive/u/2/folders/1PvcqbJbgjUNMgoYhTNCsZ_a2oEAIBjxV)
-		* CLASSIFICATION_HEAD_NAME: protein_interaction_prediction
-		* BATCH_SIZE: 256
+	* DATA: [/bert/data/ppi_prediction/split_tokenized/full/Finetune_interact_tokenized.split.test.10](https://drive.google.com/drive/u/2/folders/1GxGGOqQz5LvlLoTW3EnuEEr7fKwmu8ju)
+	* BINARIZED_DATA: [/bert/data/ppi_prediction/split_binarized/robustness_minisplits/1.00/](https://drive.google.com/drive/u/2/folders/1kjNnud51AIPu_eeuqdapHHE-GVoaHfZm)
+	* OUTPUT: [predictions.tsv](https://drive.google.com/drive/u/2/folders/1mS34_2YTBh2wZuvn9QF7m0254bnc2LE_)
+	* MODEL_FOLDER: [/bert/ppi_prediction/checkpoints/](https://drive.google.com/drive/u/2/folders/1PvcqbJbgjUNMgoYhTNCsZ_a2oEAIBjxV)
+	* CLASSIFICATION_HEAD_NAME: protein_interaction_prediction
+	* BATCH_SIZE: 256
