@@ -24,7 +24,7 @@ python3 tokenizer.py
 ```
 - To change (if needed)
 	* path: path to the protein family data. This should be a .tab file with "Sequence" and "Protein families" as two of the columns
-	* int_path path to protein interaction data. This should be a json file with 'from', 'to' and 'link' for each interaction
+	* int_path: path to protein interaction data. This should be a json file with 'from', 'to' and 'link' for each interaction
 
 ### pRoBERTa_pretrain.sh
  Pre-train RoBERTa model
@@ -48,6 +48,20 @@ bash pRoBERTa_pretrain.sh pretrain 4 /bert/pretrained_model \
 	* MAX_SENTENCES: 32
 	* UPDATE_FREQ: 64
 	* PATIENCE: 3
+
+### protein_family_clustering.py
+Cluster proteins using k-means and calculate the normalized mutual information (NMI) with pritein families
+
+#### Example Usage:
+```bash
+python3 protein_family_clustering.py
+```
+- To change (if needed)
+	* tokenized_data_filepath: input data filepath. This file has to contain tokenized protein sequences in a 'Tokenized Sequence' column, and the family each protein belongs to in a 'Protein families' column. Any other columns in this file will be ignored.
+	* roberta_weights: depending on whether you're using a pretrained or fine-tuned model, choose the appropriate weights
+	* EMBEDDING_SIZE: To match the PRoBERTa model size
+	* USE_NULL_MODEL: to use random cluster prediction instead of k-means clustering.
+
 
 ### pRoBERTa_finetune_ppi.sh: 
 Fine-tune RoBERTa model for Protein Interaction Prediction Task
