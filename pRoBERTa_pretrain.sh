@@ -35,10 +35,11 @@ LOG_FILE="$OUTPUT_DIR/$PREFIX/pretrain.log"
 mkdir -p "$CHECKPOINT_DIR"
 
 fairseq-train --fp16 "$DATA_DIR" \
+	--fp16-no-flatten-grads \
 	--task masked_lm --criterion masked_lm --bpe sentencepiece \
 	--arch roberta_base --sample-break-mode eos \
 	--tokens-per-sample $TOKENS_PER_SAMPLE \
-	--optimizer lamb --lamb-betas '(0.9,0.999)' --lamb-eps 1e-6 \
+	--optimizer lamb \
 	--fp16-no-flatten-grads \
 	--clip-norm 0.0 \
 	--lr-scheduler polynomial_decay --lr $PEAK_LR \
