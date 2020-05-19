@@ -41,50 +41,49 @@ LOG_FILE="$OUTPUT_DIR/$PREFIX/$PREFIX.log"
 mkdir -p "$CHECKPOINT_DIR"
 
 if [ "$RESUME" = "no" ]; then
-    fairseq-train --fp16 $DATA_DIR \
-	--fp16-no-flatten-grads \
-	--restore-file $ROBERTA_PATH \
-	--max-positions $MAX_POSITIONS \
-	--max-sentences $MAX_SENTENCES \
-	--task sentence_prediction \
-	--reset-optimizer --reset-dataloader --reset-meters \
-	--init-token 0 --separator-token 2 \
-	--arch roberta_base --criterion sentence_prediction \
-	--num-classes $NUM_CLASSES \
-	--optimizer lamb \
-	--lr-scheduler polynomial_decay --lr $PEAK_LR \
-	--warmup-updates $WARMUP_UPDATES --total-num-update $TOTAL_UPDATES \
-	--dropout 0.1 --attention-dropout 0.1 --weight-decay 0.01 \
-	--update-freq $UPDATE_FREQ \
-	--max-update $TOTAL_UPDATES \
-	--encoder-embed-dim $ENCODER_EMBED_DIM --encoder-layers $ENCODER_LAYERS \
-	--save-dir "$CHECKPOINT_DIR" --save-interval 1 \
-	--save-interval-updates 100 --keep-interval-updates 5 \
-	--distributed-world-size $NUM_GPUS --ddp-backend=no_c10d \
-	--best-checkpoint-metric accuracy --maximize-best-checkpoint-metric \
-	--patience $PATIENCE \
-	--log-format simple --log-interval 1000 2>&1 | tee -a "$LOG_FILE"
+    fairseq-train --fp16 --fp16-no-flatten-grads $DATA_DIR \
+        --restore-file $ROBERTA_PATH \
+        --max-positions $MAX_POSITIONS \
+        --max-sentences $MAX_SENTENCES \
+        --task sentence_prediction \
+        --truncate-sequence \
+        --classification-head-name protein_family_classification \
+        --reset-optimizer --reset-dataloader --reset-meters \
+        --init-token 0 --separator-token 2 \
+        --arch roberta_base --criterion sentence_prediction \
+        --bpe sentencepiece \
+        --num-classes $NUM_CLASSES \
+        --optimizer lamb \
+        --lr-scheduler polynomial_decay --lr $PEAK_LR --warmup-updates $WARMUP_UPDATES --total-num-update $TOTAL_UPDATES \
+        --dropout 0.1 --attention-dropout 0.1 --weight-decay 0.01 \
+        --update-freq $UPDATE_FREQ \
+        --max-update $TOTAL_UPDATES \
+        --encoder-embed-dim $ENCODER_EMBED_DIM --encoder-layers $ENCODER_LAYERS \
+        --save-dir "$CHECKPOINT_DIR" --save-interval 1 --save-interval-updates 100 --keep-interval-updates 5 \
+        --distributed-world-size $NUM_GPUS --ddp-backend=no_c10d \
+        --best-checkpoint-metric accuracy --maximize-best-checkpoint-metric \
+        --patience $PATIENCE \
+        --log-format simple --log-interval 1000 2>&1 | tee -a "$LOG_FILE"
 else
-    fairseq-train --fp16 $DATA_DIR \
-	--fp16-no-flatten-grads \
-	--max-positions $MAX_POSITIONS \
-	--max-sentences $MAX_SENTENCES \
-	--task sentence_prediction \
-	--init-token 0 --separator-token 2 \
-	--arch roberta_base --criterion sentence_prediction \
-	--num-classes $NUM_CLASSES \
-	--optimizer lamb \
-	--lr-scheduler polynomial_decay --lr $PEAK_LR \
-	--warmup-updates $WARMUP_UPDATES --total-num-update $TOTAL_UPDATES \
-	--dropout 0.1 --attention-dropout 0.1 --weight-decay 0.01 \
-	--update-freq $UPDATE_FREQ \
-	--max-update $TOTAL_UPDATES \
-	--encoder-embed-dim $ENCODER_EMBED_DIM --encoder-layers $ENCODER_LAYERS \
-	--save-dir "$CHECKPOINT_DIR" --save-interval 1 \
-	--save-interval-updates 100 --keep-interval-updates 5 \
-	--distributed-world-size $NUM_GPUS --ddp-backend=no_c10d \
-	--best-checkpoint-metric accuracy --maximize-best-checkpoint-metric \
-	--patience $PATIENCE \
-	--log-format simple --log-interval 1000 2>&1 | tee -a "$LOG_FILE"
-fi	
-
+    fairseq-train --fp16 --fp16-no-flatten-grads $DATA_DIR \
+        --max-positions $MAX_POSITIONS \
+        --max-sentences $MAX_SENTENCES \
+        --task sentence_prediction \
+        --truncate-sequence \
+        --classification-head-name protein_family_classification \
+        --init-token 0 --separator-token 2 \
+        --arch roberta_base --criterion sentence_prediction \
+        --bpe sentencepiece \
+        --num-classes $NUM_CLASSES \
+        --optimizer lamb \
+        --lr-scheduler polynomial_decay --lr $PEAK_LR --warmup-updates $WARMUP_UPDATES --total-num-update $TOTAL_UPDATES \
+        --dropout 0.1 --attention-dropout 0.1 --weight-decay 0.01 \
+        --update-freq $UPDATE_FREQ \
+        --max-update $TOTAL_UPDATES \
+        --encoder-embed-dim $ENCODER_EMBED_DIM --encoder-layers $ENCODER_LAYERS \
+        --save-dir "$CHECKPOINT_DIR" --save-interval 1 --save-interval-updates 100 --keep-interval-updates 5 \
+        --distributed-world-size $NUM_GPUS --ddp-backend=no_c10d \
+        --best-checkpoint-metric accuracy --maximize-best-checkpoint-metric \
+        --patience $PATIENCE \
+        --log-format simple --log-interval 1000 2>&1 | tee -a "$LOG_FILE"
+fi

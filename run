@@ -1,0 +1,24 @@
+bash pRoBERTa_finetune_ppi.sh ppi_0.20 4 ~/ppi_prediction/models/ \
+	 ~/ppi_prediction/split_binarized/robustness_minisplits/0.20/ \
+	768 5 12500 312 0.0025 32 64 2 3 \
+	~/ppi_prediction/pretrain_checkpoint_best.pt no
+
+bash pRoBERTa_finetune_ppi.sh ppi_0.40 4 ~/ppi_prediction/models/ \ 
+         ~/ppi_prediction/split_binarized/robustness_minisplits/0.40/ \
+        768 5 12500 312 0.0025 32 64 2 3 \
+        ~/ppi_prediction/pretrain_checkpoint_best.pt no
+
+bash pRoBERTa_finetune_ppi.sh ppi_0.60 4 ~/ppi_prediction/models/ \ 
+         ~/ppi_prediction/split_binarized/robustness_minisplits/0.60/ \
+        768 5 12500 312 0.0025 32 64 2 3 \
+        ~/ppi_prediction/pretrain_checkpoint_best.pt no
+
+bash pRoBERTa_finetune_ppi.sh ppi_0.80 4 ~/ppi_prediction/models/ \ 
+         ~/ppi_prediction/split_binarized/robustness_minisplits/0.80/ \
+        768 5 12500 312 0.0025 32 64 2 3 \
+        ~/ppi_prediction/pretrain_checkpoint_best.pt no
+
+bash pRoBERTa_finetune_ppi.sh ppi_1.00 4 ~/ppi_prediction/models/ \ 
+         ~/ppi_prediction/split_binarized/robustness_minisplits/1.00/ \
+        768 5 12500 312 0.0025 32 64 2 3 \
+        ~/ppi_prediction/pretrain_checkpoint_best.pt no
