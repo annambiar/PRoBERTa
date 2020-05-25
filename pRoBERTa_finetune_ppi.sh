@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [ "$#" -ne 15 ]; then
+if [ "$#" -ne 16 ]; then
     echo "$0 [PREFIX] [NUM_GPUS] [OUTPUT_DIR] [DATA_DIR] [ENCODER_EMBED_DIM]" \
 	"[ENCODER_LAYERS] [TOTAL_UPDATES]" \
 	"[WARMUP_UPDATES] [PEAK_LR] [MAX_SENTENCES]" \
 	"[UPDATE_FREQ] [NUM_CLASSES] [PATIENCE]" \
-	"[PRETRAIN_CHECKPOINT] <RESUME>"
+	"[PRETRAIN_CHECKPOINT] [RESUME] [USE_CLS]"
 fi
 
 PREFIX="$1"
@@ -26,10 +26,12 @@ PATIENCE=${13}
 ROBERTA_PATH="${14}"
 RESUME=${15}
 
+USE_CLS=${16}
+
 TOKENS_PER_SAMPLE=512
 MAX_POSITIONS=512
 
-BATCH_SIZE=$((MAX_SENTENCES*UPDATE_FREQ*NUM_GPU))
+BATCH_SIZE=$((MAX_SENTENCES*UPDATE_FREQ*NUM_GPUS))
 
 PREFIX="$PREFIX.DIM_$ENCODER_EMBED_DIM.LAYERS_$ENCODER_LAYERS"
 PREFIX="$PREFIX.UPDATES_$TOTAL_UPDATES.WARMUP_$WARMUP_UPDATES"
@@ -44,8 +46,8 @@ if [ "$RESUME" = "no" ]; then
     fairseq-train --fp16 --fp16-no-flatten-grads $DATA_DIR \
         --max-positions $MAX_POSITIONS --max-sentences $MAX_SENTENCES \
         --arch roberta_base --task sentence_prediction \
-        --truncate-sequence \
-        --bpe sentencepiece \
+        --truncate-sequence --use-cls-token $USE_CLS \
+	--bpe sentencepiece \
         --classification-head-name protein_interaction_prediction \
         --restore-file "$ROBERTA_PATH" --reset-optimizer --reset-dataloader --reset-meters \
         --init-token 0 --separator-token 2 \
@@ -65,7 +67,7 @@ else
     fairseq-train --fp16 --fp16-no-flatten-grads $DATA_DIR \
         --max-positions $MAX_POSITIONS --max-sentences $MAX_SENTENCES \
         --arch roberta_base --task sentence_prediction \
-        --truncate-sequence \
+        --truncate-sequence --use-cls-token $USE_CLS \
         --bpe sentencepiece \
         --classification-head-name protein_interaction_prediction \
         --init-token 0 --separator-token 2 \
