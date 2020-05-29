@@ -47,7 +47,8 @@ print("Total batches: " + str(len(batched_data)))
 with torch.no_grad():
     preds_df=pd.DataFrame(columns=[from_col, to_col, label_col, tuple_col, softmax_col, pred_col])
     for count, batch_df in enumerate(batched_data):
-        batch=collate_tokens([model.encode(tokens[from_col], tokens[to_col])[:512] 
+
+        batch=collate_tokens([torch.cat((model.encode(tokens[from_col], tokens[to_col]), torch.ones(512, dtype = torch.long)))[:512]
             for tokens in batch_df.itertuples(index=False)], pad_idx=1)
         
         logprobs=model.predict(classification_head, batch)

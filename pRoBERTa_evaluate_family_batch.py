@@ -43,8 +43,10 @@ print("Total batches: " + str(len(batched_data)))
 with torch.no_grad():
     preds_df = pd.DataFrame(columns=[sequence_col, label_col, preds_col])
     for count, batch_df in enumerate(batched_data):
-        batch = collate_tokens([model.encode(tokens)[:512] for tokens in batch_df[sequence_col]],
-                pad_idx=1)
+ 
+        batch=collate_tokens([torch.cat((model.encode(tokens), torch.ones(512, dtype = torch.long)))[:512]
+            for tokens in batch_df[sequence_col]], pad_idx=1)
+
         logprobs = model.predict(classification_head, batch)
         preds = model.task.label_dictionary.string(logprobs.argmax(dim=1) + model.task.label_dictionary.nspecial)
         batch_df[preds_col] = preds.split()
