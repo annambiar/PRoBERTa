@@ -24,7 +24,7 @@ Train a tokenizer and tokenize data for protein family and interaction fine-tuni
 python3 tokenizer.py
 ```
 
-- Arguments
+- To change
 
 | Name | Description |
 | ----- | --------------------------------------- |
@@ -57,14 +57,14 @@ bash pRoBERTa_pretrain.sh pretrain 4 pretrained_model \
 | UPDATE_FREQ | Updates the model every UPDATE_FREQ batches | 64 |
 | PATIENCE | Early stop training if valid performance doesn’t improve for PATIENCE consecutive validation runs | 3 |
 
-### protein_family_clustering.py
-Cluster proteins using k-means and calculate the normalized mutual information (NMI) with protein families
+### Clustering/protein_family_clustering.py
+Cluster proteins using k-means and calculate the normalized mutual information (NMI) with protein families. Before running this make sure to download roberta.base and the relevant checkpoints.
 
 #### Example Usage:
 ```bash
 python3 protein_family_clustering.py
 ```
-- Arguments
+- To change
 
 | Name | Description |
 | ----- | ----------------------------------- |
