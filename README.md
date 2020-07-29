@@ -57,21 +57,6 @@ bash pRoBERTa_pretrain.sh pretrain 4 pretrained_model \
 | UPDATE_FREQ | Updates the model every UPDATE_FREQ batches | 64 |
 | PATIENCE | Early stop training if valid performance doesn’t improve for PATIENCE consecutive validation runs | 3 |
 
-### Clustering/protein_family_clustering.py
-Cluster proteins using k-means and calculate the normalized mutual information (NMI) with protein families. Before running this make sure to download roberta.base and the relevant checkpoints.
-
-#### Example Usage:
-```bash
-python3 protein_family_clustering.py
-```
-- To change
-
-| Name | Description |
-| ----- | ----------------------------------- |
-| tokenized_data_filepath | Input data filepath. This file has to contain tokenized protein sequences in a 'Tokenized Sequence' column, and the family each protein belongs to in a 'Protein families' column. Any other columns in this file will be ignored. |
-| roberta_weights | depending on whether you're using a pretrained or fine-tuned model, choose the appropriate weights |
-| EMBEDDING_SIZE | Should match the PRoBERTa model size |
-| USE_NULL_MODEL | Whether to use random cluster prediction instead of k-means clustering |
 
 
 ### pRoBERTa_finetune_ppi.sh: 
@@ -133,6 +118,24 @@ bash pRoBERTa_finetune_pfamclass.sh family 4 family_classification \
 | PATIENCE | Early stop training if valid performance doesn’t improve for PATIENCE consecutive validation runs | 3 |
 | PRETRAIN_CHECKPOINT | Path to pretrained model checkpoint | [pretraining/checkpoint_best.pt](https://drive.google.com/drive/u/2/folders/1TbFjyRfbkLgJ_rlvO1SFB-ZvwQyykvK7) |
 | RESUME_TRAINING | Whether to resume training from previous finetuned model checkpoints | no |
+
+
+### Clustering/protein_family_clustering.py
+Cluster proteins using k-means and calculate the normalized mutual information (NMI) with protein families. Before running this make sure to download roberta.base and the relevant checkpoints.
+
+#### Example Usage:
+```bash
+python3 protein_family_clustering.py
+```
+- To change
+
+| Name | Description |
+| ----- | ----------------------------------- |
+| tokenized_data_filepath | Input data filepath. This file has to contain tokenized protein sequences in a 'Tokenized Sequence' column, and the family each protein belongs to in a 'Protein families' column. Any other columns in this file will be ignored. |
+| roberta_weights | depending on whether you're using a pretrained or fine-tuned model, choose the appropriate weights |
+| EMBEDDING_SIZE | Should match the PRoBERTa model size |
+| USE_NULL_MODEL | Whether to use random cluster prediction instead of k-means clustering |
+
 
 ### pRoBERTa_evaluate_family_batch.py: 
 Predict families using fine-tuned RoBERTa model
