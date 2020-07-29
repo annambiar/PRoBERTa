@@ -5,10 +5,15 @@ Ananthan Nambiar, Maeve Heflin, Simon Liu, Sergei Maslov, Mark Hopkins, Anna Rit
 ## Notes
 - Links to Google Drive folders:
 [pretrained weights](https://drive.google.com/drive/u/2/folders/1TbFjyRfbkLgJ_rlvO1SFB-ZvwQyykvK7)
+
 [protein family finetuned weights](https://drive.google.com/drive/folders/1aro0V5yQgR53kLqKr9wYxjv_tVdbiw_m?usp=sharing)
+
 [ppi conservative finetuned (20%) weights](https://drive.google.com/drive/folders/1D58Bzxm_t-MaRu7QQmb7VRlwfEvxytnD?usp=sharing)
+
 [ppi conservative finetuned (100%) weights](https://drive.google.com/drive/folders/1djwhZE66N6SGT7qh-0yhzplpM4_H6CE-?usp=sharing)
+
 [ppi aggressive finetuned (20%) weights](https://drive.google.com/drive/folders/1n58G7b_2ks_TPKh52FbuRrZW0LUT80t8?usp=sharing)
+
 [ppi aggressive finetuned (100%) weights](https://drive.google.com/drive/folders/1lkzIa2DwYKiyP6TIglE2mAbSM1NnDDrB?usp=sharing)
 
 
