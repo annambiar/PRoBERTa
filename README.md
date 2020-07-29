@@ -1,9 +1,17 @@
 
 # PRoBERTa
-Ananthan Nambiar, Maeve Heflin, Simon Liu, Mark Hopkins, Sergei Maslov, Anna Ritz
+Ananthan Nambiar, Maeve Heflin, Simon Liu, Sergei Maslov, Mark Hopkins, Anna Ritz
 
 ## Notes
-- Links to Google Drive folders are provided for example output and data files.
+- Links to Google Drive folders:
+[pretrained weights](https://drive.google.com/drive/u/2/folders/1TbFjyRfbkLgJ_rlvO1SFB-ZvwQyykvK7)
+[protein family finetuned weights](https://drive.google.com/drive/folders/1aro0V5yQgR53kLqKr9wYxjv_tVdbiw_m?usp=sharing)
+[ppi conservative finetuned (20%) weights](https://drive.google.com/drive/folders/1D58Bzxm_t-MaRu7QQmb7VRlwfEvxytnD?usp=sharing)
+[ppi conservative finetuned (100%) weights](https://drive.google.com/drive/folders/1djwhZE66N6SGT7qh-0yhzplpM4_H6CE-?usp=sharing)
+[ppi aggressive finetuned (20%) weights](https://drive.google.com/drive/folders/1n58G7b_2ks_TPKh52FbuRrZW0LUT80t8?usp=sharing)
+[ppi aggressive finetuned (100%) weights](https://drive.google.com/drive/folders/1lkzIa2DwYKiyP6TIglE2mAbSM1NnDDrB?usp=sharing)
+
+
 
 ## Requirements and Installation
 sentencepiece tokenizer
@@ -120,12 +128,12 @@ bash pRoBERTa_finetune_pfamclass.sh family 4 family_classification \
 | RESUME_TRAINING | Whether to resume training from previous finetuned model checkpoints | no |
 
 
-### Clustering/protein_family_clustering.py
+### Clustering/protein_family_clustering_loop.py
 Cluster proteins using k-means and calculate the normalized mutual information (NMI) with protein families. Before running this make sure to download roberta.base and the relevant checkpoints.
 
 #### Example Usage:
 ```bash
-python3 protein_family_clustering.py
+python3 protein_family_clustering_loop.py
 ```
 - To change
 
