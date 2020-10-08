@@ -4,8 +4,9 @@ Ananthan Nambiar, Maeve Heflin, Simon Liu, Sergei Maslov, Mark Hopkins, Anna Rit
 
 ## Notes
 - Links to Google Drive folders:
+[BPE model](https://drive.google.com/drive/folders/1lJkG4IAWxSs8mGqSk-MjsaBQFV4Y3dhq?usp=sharing)
 
-[pretraining data]()
+[pretraining data](https://drive.google.com/drive/folders/1glEeWDS0HoE_kYXqwySqoPpTuYstG_Dw?usp=sharing)
 
 [family data](https://drive.google.com/drive/folders/1iXMEZuzDV1D0tstP6o_MjKzGab56_bOU?usp=sharing)
 
